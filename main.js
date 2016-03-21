@@ -16,14 +16,12 @@ var colors = require('colors');
 
 client.on("message", (m) => {
     var command = m.content.toLowerCase();
-    if (m.channel.id !== config.get("channel")) return
-    console.log(colors.rainbow(command));
+    if (m.channel.id !== config.get("channel")) return;
+    console.log("U: ".green + m.author.username.blue + " C: ".green + command);
     if (config.get("enter").indexOf(command) > -1) {
         if (entries.get("entries", []).indexOf(m.author.id) < 0) {
             entries.get("entries", [m.author.id]).push(m.author.id);
             entries.save();
-            console.log(entries.get("entries", [m.author.id]));
-            console.log("got one");
             m.reply("You have been entered to **win**!");
         } else {
             m.reply("Sorry but you have aleady entered.");
@@ -37,8 +35,8 @@ client.on("message", (m) => {
         console.log(num);
         var winner = client.servers.get("id", config.get("server")).members.get("id", Entries[num])
         m.reply("Congratulations to " + winner + " ID: " + Entries[num]);
-        console.log(winner + "");
-        console.log(winner.username);
+        console.log(winner.id.rainbow);
+        console.log(winner.username.rainbow);
     }
     if (config.get("clear").indexOf(command) > -1) {
         entries.set("entries", []);
