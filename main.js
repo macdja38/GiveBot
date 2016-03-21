@@ -31,7 +31,12 @@ client.on("message", (m) => {
     if (config.get("masters", []).indexOf(m.author.id) < 0) return;
     if (config.get("draw").indexOf(command) > -1) {
         var Entries = entries.get("entries", []);
-        var num = Math.floor((Math.random() * Entries.length));
+        var count = Entries.length;
+        if(count == 0) {
+            m.reply("No entries.");
+            return;
+        }
+        var num = Math.floor(Math.random() * count);
         console.log(num);
         var winner = client.servers.get("id", config.get("server")).members.get("id", Entries[num])
         m.reply("Congratulations to " + winner + " ID: " + Entries[num]);
