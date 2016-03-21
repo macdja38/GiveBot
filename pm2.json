@@ -1,0 +1,6 @@
+{
+  "apps" : [{
+    "name": "GiveBot",
+    "script": "main.js"
+  }]
+}
