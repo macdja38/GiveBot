@@ -22,11 +22,11 @@ client.on("message", (m) => {
             config.set("enabled", true);
             m.reply("enabled!");
         }
-        if(config.get("disable").indexOf(command) > -1) {
+        else if(config.get("disable").indexOf(command) > -1) {
             config.set("enabled", false);
             m.reply("disabled!");
         }
-        if (config.get("draw").indexOf(command) > -1) {
+        else if (config.get("draw").indexOf(command) > -1) {
             var Entries = entries.get("entries", []);
             var count = Entries.length;
             if(count == 0) {
@@ -40,13 +40,18 @@ client.on("message", (m) => {
             console.log(winner.id.rainbow);
             console.log(winner.username.rainbow);
         }
-        if (config.get("clear").indexOf(command) > -1) {
+        else if (config.get("clear").indexOf(command) > -1) {
             entries.set("entries", []);
             m.reply("All entries reset!");
             console.log("cleared!".rainbow);
         }
+        else if (config.get("count").indexOf(command) > -1) {
+            var count = entries.get("entries", []).length;
+            m.reply("Their are **" + count + "** entries so far!");
+            console.log(("Their are " + count + " entries so far!").rainbow);
+        }
     }
-    if(config.get("enabled", false) == false) return;
+    else if(config.get("enabled", false) == false) return;
     console.log("U: ".green + m.author.username.blue + " C: ".green + command);
     if (config.get("enter").indexOf(command) > -1) {
         if (entries.get("entries", []).indexOf(m.author.id) < 0) {

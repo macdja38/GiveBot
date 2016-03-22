@@ -25,6 +25,14 @@
     "!disable",
     "/disable"
   ],
+  "count": [
+    "!!count",
+    "!count",
+    "/count",
+    "!!tally",
+    "!tally",
+    "/tally"
+  ],
   "masters": [
     "85257659694993408",
     "77175860708249600"
