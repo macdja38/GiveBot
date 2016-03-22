@@ -1,4 +1,5 @@
 {
+  "enabled": true,
   "enter": [
     "!!enter",
     "!enter",
@@ -13,6 +14,16 @@
     "!!clear",
     "!clear",
     "/clear"
+  ],
+  "enable": [
+    "!!enable",
+    "!enable",
+    "/enable"
+  ],
+  "disable": [
+    "!!disable",
+    "!disable",
+    "/disable"
   ],
   "masters": [
     "85257659694993408",
