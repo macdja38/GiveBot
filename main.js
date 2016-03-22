@@ -20,9 +20,11 @@ client.on("message", (m) => {
     if (config.get("masters", []).indexOf(m.author.id) > -1) {
         if(config.get("enable").indexOf(command) > -1) {
             config.set("enabled", true);
+            m.reply("enabled!");
         }
         if(config.get("disable").indexOf(command) > -1) {
             config.set("enabled", false);
+            m.reply("disabled!");
         }
         if (config.get("draw").indexOf(command) > -1) {
             var Entries = entries.get("entries", []);
