@@ -51,7 +51,7 @@ client.on("message", (m) => {
             console.log(("Their are " + count + " entries so far!").rainbow);
         }
     }
-    else if(config.get("enabled", false) == false) return;
+    if(config.get("enabled", false) == false) return;
     console.log("U: ".green + m.author.username.blue + " C: ".green + command);
     if (config.get("enter").indexOf(command) > -1) {
         if (entries.get("entries", []).indexOf(m.author.id) < 0) {
@@ -61,7 +61,6 @@ client.on("message", (m) => {
         } else {
             m.reply("Sorry but you have aleady entered.");
         }
-        return;
     }
 });
 
@@ -69,4 +68,4 @@ client.on("ready", () => {
     console.log("Ready");
 });
 
-client.login(AuthDetails.email, AuthDetails.password);
+client.loginWithToken(AuthDetails.token);
