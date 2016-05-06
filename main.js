@@ -3,7 +3,7 @@
  */
 
 var Discord = require("discord.js");
-var client = new Discord.Client();
+var client = new Discord.Client({autoReconnect: true});
 
 var AuthDetails = require("../auth.json");
 
@@ -68,4 +68,6 @@ client.on("ready", () => {
     console.log("Ready");
 });
 
-client.loginWithToken(AuthDetails.token);
+client.loginWithToken(AuthDetails.token, (error)=>{
+    if(error) console.error(error);
+});
