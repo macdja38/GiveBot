@@ -35,10 +35,14 @@ client.on("message", (m) => {
             }
             var num = Math.floor(Math.random() * count);
             console.log(num);
-            var winner = client.servers.get("id", config.get("server")).members.get("id", Entries[num])
-            m.reply("Congratulations to " + winner + " ID: " + Entries[num]);
-            console.log(winner.id.rainbow);
-            console.log(winner.username.rainbow);
+            var winner = client.servers.get("id", config.get("server")).members.get("id", Entries[num]);
+            if(winner) {
+                m.reply("Congratulations to " + winner + " ID: " + Entries[num]);
+                console.log(winner.id.rainbow);
+                console.log(winner.username.rainbow);
+            } else {
+                m.reply("Person with id " + Entries[num] + " Won, but the left the server! Draw again!")
+            }
         }
         else if (config.get("clear").indexOf(command) > -1) {
             entries.set("entries", []);
